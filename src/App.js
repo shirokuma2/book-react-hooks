@@ -6,9 +6,10 @@ const LoginControl = ({ isLoggedIn, viewWord }) => {
 
 const AccessControl = () => {
   const [isLogin, setIsLogin] = useState(false);
+  // ボタンの表示文字を状態によって変更
   const logWord = isLogin ? "ログアウト" : "ログイン";
-
   return (
+    // ログイン、ログアウトボタンを表示
     <LoginControl isLoggedIn={() => setIsLogin(!isLogin)} viewWord={logWord} />
   );
 };
