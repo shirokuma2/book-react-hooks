@@ -1,24 +1,18 @@
 import React, { useState } from "react";
 
-const LogoutButton = (props) => {
-  return <button onClick={props.toggleIsLoggedIn}>ログアウト</button>;
+const LoginControl = ({ isLoggedIn, viewWord }) => {
+  return <button onClick={isLoggedIn}>{viewWord}</button>;
 };
 
-const LoginButton = (props) => {
-  return <button onClick={props.toggleIsLoggedIn}>ログイン</button>;
-};
+const AccessControl = () => {
+  const [isLogin, setIsLogin] = useState(false);
+  const logWord = isLogin ? "ログアウト" : "ログイン";
 
-const LoginControl = () => {
-  const [isLoggetIn, setLoggetInState] = useState(false);
-
-  const toggleIsLoggedIn = () => setLoggetInState(!isLoggetIn);
-
-  if (isLoggetIn) {
-    return <LogoutButton toggleIsLoggedIn={toggleIsLoggedIn} />;
-  }
-  return <LoginButton toggleIsLoggedIn={toggleIsLoggedIn} />;
+  return (
+    <LoginControl isLoggedIn={() => setIsLogin(!isLogin)} viewWord={logWord} />
+  );
 };
 
 export default function App() {
-  return <LoginControl />;
+  return <AccessControl />;
 }
